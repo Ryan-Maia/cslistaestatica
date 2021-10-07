@@ -6,9 +6,8 @@ namespace exercicio
     {
         string[] valores;
         int limite;
-        int quantidadeAtual;
+        int quantidadeAtual = 0;
         int ultimo = 0;
-        int primeiro = 0;
         public Lista(int Tamanho)
         {
             valores = new string[Tamanho];
@@ -21,7 +20,7 @@ namespace exercicio
             {
                 valores[ultimo] = valor;
                 ultimo++;
-                this.quantidadeAtual ++;
+                this.quantidadeAtual += 1;
             }
             else
             {
@@ -29,26 +28,33 @@ namespace exercicio
             }
         }
 
-        public void Inserir(string valor, int posicao)
+        public void Remover(int posicao)
         {
-            if(ultimo < limite)
+            if(posicao < limite && posicao >= 0)
             {
-                for (int i = ultimo; i >= posicao; i--)
+                for (int i = posicao; i < limite - 1; i++)
                 {
-                    valores[i] = valores[(i - 1)];
+                    string temporaria = valores[i];
+                    valores[i] = valores[i + 1];
+                    valores[i+1] = temporaria;
                 }
-
-                valores[posicao - 1] = valor;
-                ultimo++;
-                this.quantidadeAtual ++;
+                this.quantidadeAtual --;
+                this.ultimo --;
             }
             else
             {
-                Console.WriteLine("A lista está cheia");
+                Console.WriteLine("A posição é inválida");
             }
         }
         public string[] Listar(){
-            return this.valores;
+            string[] valores = new string[this.quantidadeAtual];
+            for(int i = 0; i < this.ultimo; i ++){
+                valores[i] = this.valores[i];
+            }
+            return valores;
+        }
+        public void Alterar (int indice, string valor) {
+            this.valores[indice] = valor;
         }
         public int Quantidade () {
             return this.quantidadeAtual;

@@ -86,6 +86,7 @@ namespace exercicio
             
             while (true){
                 writeOptions(options);
+                Console.CursorVisible = false;
 
                 string pressedKey = Console.ReadKey().Key.ToString();
 
@@ -99,14 +100,15 @@ namespace exercicio
                         Console.Clear();
                         foreach (string jogador in jogadores.Listar())
                         {
-                            Console.WriteLine(jogador);
+                            Console.WriteLine("- " + jogador);
                         }
                         Console.Write("Aperte Enter para continuar");
-                        Console.ReadLine();
+                        Console.ReadKey();
                     }
                     else if (choice == 1)
                     {
                         Console.Clear();
+                        Console.CursorVisible = true;
                         Console.Write("Insira um nome (vazio para cancelar): ");
                         string nome = Console.ReadLine();
                         nome = nome.Trim();
@@ -120,6 +122,12 @@ namespace exercicio
                         choice = 0;
                         while (true)
                         {
+                            if(jogadores.Quantidade() == 0){
+                                Console.Clear();
+                                Console.WriteLine("Lista vazia. Pressione Enter para sair");
+                                Console.ReadKey();
+                                break;
+                            }
                             writeOptions(jogadores.Listar());
                             Console.WriteLine("Aperte ESC para retornar");
                             string pressedKey2 = Console.ReadKey().Key.ToString();
@@ -134,17 +142,57 @@ namespace exercicio
                             }
                             else if (pressedKey2 == "Enter")
                             {
-                                //
+                                Console.Clear();
+                                Console.CursorVisible = true;
+                                Console.Write("Insira um novo nome (vazio para cancelar): ");
+                                string nome = Console.ReadLine();
+                                nome = nome.Trim();
+                                if (nome != ""){
+                                    jogadores.Alterar(choice, nome);
+                                }
                             }
                             else if (pressedKey2 == "Escape")
                             {
+                                choice = 0;
                                 break;
                             }
                         }
                     }
                     else if (choice == 3)
                     {
+                        choice = 0;
+                        while (true)
+                        {
+                            if(jogadores.Quantidade() == 0){
+                                Console.Clear();
+                                Console.WriteLine("Lista vazia. Pressione Enter para sair");
+                                Console.ReadKey();
+                                break;
+                            }
+                            writeOptions(jogadores.Listar());
+                            Console.WriteLine("Aperte ESC para retornar");
+                            string pressedKey2 = Console.ReadKey().Key.ToString();
 
+                            if(pressedKey2 == "UpArrow")
+                            {
+                                choice = (choice - 1 < 0) ? jogadores.Quantidade() - 1 : choice -= 1 ;
+                            } 
+                            else if (pressedKey2 == "DownArrow")
+                            {
+                                choice = (choice + 1 > jogadores.Quantidade() - 1) ? 0 : choice += 1 ;
+                            }
+                            else if (pressedKey2 == "Enter")
+                            {
+                                Console.Clear();
+                                Console.CursorVisible = true;
+                                jogadores.Remover(choice);
+                            }
+                            else if (pressedKey2 == "Escape")
+                            {
+                                choice = 0;
+                                break;
+                            }
+                        }
                     }
                     else if (choice == 4)
                     {
