@@ -1,0 +1,16 @@
+/home/ryanmaia/dev/cs/exercicio/bin/Debug/net5.0/exercicio
+/home/ryanmaia/dev/cs/exercicio/bin/Debug/net5.0/exercicio.deps.json
+/home/ryanmaia/dev/cs/exercicio/bin/Debug/net5.0/exercicio.runtimeconfig.json
+/home/ryanmaia/dev/cs/exercicio/bin/Debug/net5.0/exercicio.runtimeconfig.dev.json
+/home/ryanmaia/dev/cs/exercicio/bin/Debug/net5.0/exercicio.dll
+/home/ryanmaia/dev/cs/exercicio/bin/Debug/net5.0/ref/exercicio.dll
+/home/ryanmaia/dev/cs/exercicio/bin/Debug/net5.0/exercicio.pdb
+/home/ryanmaia/dev/cs/exercicio/obj/Debug/net5.0/exercicio.csprojAssemblyReference.cache
+/home/ryanmaia/dev/cs/exercicio/obj/Debug/net5.0/exercicio.GeneratedMSBuildEditorConfig.editorconfig
+/home/ryanmaia/dev/cs/exercicio/obj/Debug/net5.0/exercicio.AssemblyInfoInputs.cache
+/home/ryanmaia/dev/cs/exercicio/obj/Debug/net5.0/exercicio.AssemblyInfo.cs
+/home/ryanmaia/dev/cs/exercicio/obj/Debug/net5.0/exercicio.csproj.CoreCompileInputs.cache
+/home/ryanmaia/dev/cs/exercicio/obj/Debug/net5.0/exercicio.dll
+/home/ryanmaia/dev/cs/exercicio/obj/Debug/net5.0/ref/exercicio.dll
+/home/ryanmaia/dev/cs/exercicio/obj/Debug/net5.0/exercicio.pdb
+/home/ryanmaia/dev/cs/exercicio/obj/Debug/net5.0/exercicio.genruntimeconfig.cache

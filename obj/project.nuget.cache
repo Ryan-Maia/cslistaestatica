@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Fvz5YXuc8ORz8b90C8kRJdgBlkU9tRh1tkCfOhdxXzEBUsEQ+rS9w5xeR4sRXFzmnnrLs6mVUNFwh+Bdc1KrSQ==",
+  "success": true,
+  "projectFilePath": "/home/ryanmaia/dev/cs/exercicio/exercicio.csproj",
+  "expectedPackageFiles": [
+    "/home/ryanmaia/.nuget/packages/microsoft.aspnetcore.app.ref/5.0.0/microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
