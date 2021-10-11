@@ -60,9 +60,9 @@ namespace exercicio
         }
         public void Ordernar(int sentido = -1)
         {
-            for (int i = 0; i < this.valores.Length; i++)
+            for (int i = 0; i < this.ultimo; i++)
             {
-                for (int j = i; j < this.valores.Length; j++)
+                for (int j = i; j < this.ultimo; j++)
                 {
                     int comparacao = string.Compare(this.valores[i],this.valores[j]); 
                     if (comparacao == sentido)

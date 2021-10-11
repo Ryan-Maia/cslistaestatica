@@ -11,81 +11,99 @@ namespace exercicio
         {
             jogadores = new Lista(10);
             quadras = new Lista(10);
-            
+
             choice = 0;
 
-            
-            while(true){
-                Console.Clear();
 
-                Console.WriteLine("Seja bem vindo ao controle de jogadores do time de basket da FATEC - ARAÇATUBA!");
-                Console.WriteLine("Selecione uma das opções abaixo para acessar a correspondente área.");
+            while (true)
+            {
+                Console.Clear();
 
                 Console.CursorVisible = false;
 
-                string[] messages = {"Cadastro de jogador", "Cadastro de quadra", "Encerrar"};
+                string[] messages = { "Cadastro de jogador", "Cadastro de quadra", "Encerrar" };
 
-                writeOptions(messages);
+                writeOptions(messages, true);
 
                 string pressedKey = Console.ReadKey().Key.ToString();
-                if(pressedKey == "DownArrow"){
+                if (pressedKey == "DownArrow")
+                {
                     choice = (choice + 1 > messages.Length - 1) ? 0 : choice += 1;
-                } else if (pressedKey == "UpArrow"){
+                }
+                else if (pressedKey == "UpArrow")
+                {
                     choice = (choice - 1 < 0) ? messages.Length - 1 : choice -= 1;
-                } else if (pressedKey == "Enter"){
-                    if(choice == 0){
+                }
+                else if (pressedKey == "Enter")
+                {
+                    if (choice == 0)
+                    {
                         choice = 0;
                         playerMenu();
                     }
-                    else if (choice == 1){
+                    else if (choice == 1)
+                    {
                         choice = 0;
                         stageMenu();
                     }
-                    else {
+                    else
+                    {
                         Console.Clear();
                         Console.WriteLine("Obrigado por utilizar o sistema!");
                         break;
                     }
                 }
             }
-            
+
         }
-        static void writeOptions (string[] messages)
+        static void writeOptions(string[] messages, bool menu = false)
         {
             Console.Clear();
-            for(int i = 0; i < messages.Length; i++){
-                if(i == choice)
+            if (menu)
+            {
+                Console.WriteLine("Seja bem vindo ao controle de jogadores do time de basket da FATEC - ARAÇATUBA!");
+                Console.WriteLine("Selecione uma das opções abaixo para acessar a correspondente área.");
+                Console.WriteLine();
+            }
+            for (int i = 0; i < messages.Length; i++)
+            {
+                if (i == choice)
                 {
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.Red;
                 }
-                Console.WriteLine("{0} - {1}",i+1, messages[i]);
+                Console.WriteLine("{0} - {1}", i + 1, messages[i]);
                 Console.ResetColor();
             }
         }
-
-        static void playerMenu ()
+        static void playerMenu()
         {
-            string[] options = {"Listar Jogadores", "Cadastrar Jogador", "Editar Jogador", "Remover Jogador", "Ordenar Jogadores", "Retornar ao Menu"};
-            
-            while (true){
+            string[] options = { "Listar Jogadores", "Cadastrar Jogador", "Editar Jogador", "Remover Jogador", "Ordenar Jogadores", "Retornar ao Menu" };
+
+            while (true)
+            {
                 writeOptions(options);
                 Console.CursorVisible = false;
 
                 string pressedKey = Console.ReadKey().Key.ToString();
 
-                if(pressedKey == "UpArrow"){
-                    choice = (choice - 1 < 0) ? options.Length - 1 : choice -= 1 ;
-                } else if (pressedKey == "DownArrow"){
-                    choice = (choice + 1 > options.Length - 1) ? 0 : choice += 1 ;
-                } else if (pressedKey == "Enter"){
-                    if(choice == 0)
+                if (pressedKey == "UpArrow")
+                {
+                    choice = (choice - 1 < 0) ? options.Length - 1 : choice -= 1;
+                }
+                else if (pressedKey == "DownArrow")
+                {
+                    choice = (choice + 1 > options.Length - 1) ? 0 : choice += 1;
+                }
+                else if (pressedKey == "Enter")
+                {
+                    if (choice == 0)
                     {
                         Console.Clear();
                         string[] jogadoresLista = jogadores.Listar();
                         for (int i = 0; i < jogadoresLista.Length; i++)
                         {
-                            Console.WriteLine("{0} - {1}",i+1,jogadoresLista[i]);
+                            Console.WriteLine("{0} - {1}", i + 1, jogadoresLista[i]);
                         }
                         Console.Write("Aperte qualquer tecla para continuar");
                         Console.ReadKey();
@@ -97,17 +115,19 @@ namespace exercicio
                         Console.Write("Insira um nome (vazio para cancelar): ");
                         string nome = Console.ReadLine();
                         nome = nome.Trim();
-                        if (nome != ""){
+                        if (nome != "")
+                        {
                             jogadores.Inserir(nome);
                         }
-                        
+
                     }
                     else if (choice == 2)
                     {
                         choice = 0;
                         while (true)
                         {
-                            if(jogadores.Quantidade() == 0){
+                            if (jogadores.Quantidade() == 0)
+                            {
                                 Console.Clear();
                                 Console.WriteLine("Lista vazia. Pressione Enter para sair");
                                 Console.ReadKey();
@@ -117,13 +137,13 @@ namespace exercicio
                             Console.WriteLine("Aperte ESC para retornar");
                             string pressedKey2 = Console.ReadKey().Key.ToString();
 
-                            if(pressedKey2 == "UpArrow")
+                            if (pressedKey2 == "UpArrow")
                             {
-                                choice = (choice - 1 < 0) ? jogadores.Quantidade() - 1 : choice -= 1 ;
-                            } 
+                                choice = (choice - 1 < 0) ? jogadores.Quantidade() - 1 : choice -= 1;
+                            }
                             else if (pressedKey2 == "DownArrow")
                             {
-                                choice = (choice + 1 > jogadores.Quantidade() - 1) ? 0 : choice += 1 ;
+                                choice = (choice + 1 > jogadores.Quantidade() - 1) ? 0 : choice += 1;
                             }
                             else if (pressedKey2 == "Enter")
                             {
@@ -132,7 +152,8 @@ namespace exercicio
                                 Console.Write("Insira um novo nome (vazio para cancelar): ");
                                 string nome = Console.ReadLine();
                                 nome = nome.Trim();
-                                if (nome != ""){
+                                if (nome != "")
+                                {
                                     jogadores.Alterar(choice, nome);
                                 }
                             }
@@ -148,7 +169,8 @@ namespace exercicio
                         choice = 0;
                         while (true)
                         {
-                            if(jogadores.Quantidade() == 0){
+                            if (jogadores.Quantidade() == 0)
+                            {
                                 Console.Clear();
                                 Console.WriteLine("Lista vazia. Pressione Enter para sair");
                                 Console.ReadKey();
@@ -158,13 +180,13 @@ namespace exercicio
                             Console.WriteLine("Aperte ESC para retornar");
                             string pressedKey2 = Console.ReadKey().Key.ToString();
 
-                            if(pressedKey2 == "UpArrow")
+                            if (pressedKey2 == "UpArrow")
                             {
-                                choice = (choice - 1 < 0) ? jogadores.Quantidade() - 1 : choice -= 1 ;
-                            } 
+                                choice = (choice - 1 < 0) ? jogadores.Quantidade() - 1 : choice -= 1;
+                            }
                             else if (pressedKey2 == "DownArrow")
                             {
-                                choice = (choice + 1 > jogadores.Quantidade() - 1) ? 0 : choice += 1 ;
+                                choice = (choice + 1 > jogadores.Quantidade() - 1) ? 0 : choice += 1;
                             }
                             else if (pressedKey2 == "Enter")
                             {
@@ -181,35 +203,78 @@ namespace exercicio
                     }
                     else if (choice == 4)
                     {
-                        jogadores.Ordernar(1);
-                        Console.WriteLine("Jogadores ordenados com sucesso!");
-                        Console.ReadKey();
+                        while (true)
+                        {
+                            string[] opcoes = { "Crescente", "Decrescente", "Retornar ao menu" };
+                            writeOptions(opcoes);
+                            string pressedKey2 = Console.ReadKey().Key.ToString();
+
+                            if (pressedKey2 == "UpArrow")
+                            {
+                                choice = (choice - 1 < 0) ? opcoes.Length - 1 : choice -= 1;
+                            }
+                            else if (pressedKey2 == "DownArrow")
+                            {
+                                choice = (choice + 1 > opcoes.Length - 1) ? 0 : choice += 1;
+                            }
+                            else if (pressedKey2 == "Enter")
+                            {
+                                if (choice == 0)
+                                {
+                                    jogadores.Ordernar(1);
+                                }
+                                else if (choice == 1)
+                                {
+                                    jogadores.Ordernar(-1);
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                                Console.WriteLine("Jogadores ordenados com sucesso!");
+                                Console.ReadKey();
+                                break;
+                            }
+                            else if (pressedKey2 == "Escape")
+                            {
+                                break;
+                            }
+                        }
                     }
-                    else 
+                    else
                     {
                         choice = 0;
                         break;
                     }
-                } else if (pressedKey == "Escape"){
+                }
+                else if (pressedKey == "Escape")
+                {
                     break;
                 }
             }
         }
-        static void stageMenu ()
+        static void stageMenu()
         {
-            string[] options = {"1 - Consultar Quadra", "2 - Cadastrar Quadra", "3 - Editar Quadra", "4 - Remover Quadra", "5 - Ordenar Quadras", "6 - Retornar ao menu"};
+            string[] options = { "1 - Consultar Quadra", "2 - Cadastrar Quadra", "3 - Editar Quadra", "4 - Remover Quadra", "5 - Ordenar Quadras", "6 - Retornar ao menu" };
 
-            while (true){
+            while (true)
+            {
                 writeOptions(options);
 
                 string pressedKey = Console.ReadKey().Key.ToString();
 
-                if(pressedKey == "UpArrow"){
-                    choice = (choice - 1 < 0) ? options.Length - 1 : choice -= 1 ;
-                } else if (pressedKey == "DownArrow"){
-                    choice = (choice + 1 > options.Length - 1) ? 0 : choice += 1 ;
-                } else if (pressedKey == "Enter"){
-                    if(choice == 4){
+                if (pressedKey == "UpArrow")
+                {
+                    choice = (choice - 1 < 0) ? options.Length - 1 : choice -= 1;
+                }
+                else if (pressedKey == "DownArrow")
+                {
+                    choice = (choice + 1 > options.Length - 1) ? 0 : choice += 1;
+                }
+                else if (pressedKey == "Enter")
+                {
+                    if (choice == 4)
+                    {
                         choice = 0;
                         break;
                     }
